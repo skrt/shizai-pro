@@ -1,0 +1,52 @@
+<%# locals: (status_filter:, status_counts:) %>
+<%# Component Catalog: tabs.html — Pill Tabs %>
+<%# Active: bg-blue-100 text-blue-700 font-medium py-1.5, counter: rounded-sm bg-blue-100 text-blue-700 %>
+<%# Inactive with counter: bg-white text-gray-600 py-1, counter: rounded-full bg-red-50 text-red-500 %>
+<%# Inactive without counter: py-1.5 %>
+<%
+  tabs = [
+    { key: "all",               label: "すべて" },
+    { key: "draft",             label: "下書き" },
+    { key: "pending_approval",  label: "承認待ち" },
+    { key: "pending_send",      label: "送信待ち" },
+    { key: "pending_delivery",  label: "納品待ち" },
+    { key: "in_conversation",   label: "会話中" },
+    { key: "delivered",         label: "納品済み" },
+    { key: "rejected",          label: "差し戻し" },
+    { key: "cancelled",         label: "取り消し" },
+  ]
+%>
+<div class="mb-4 flex items-center justify-between">
+  <div class="flex items-center gap-1">
+    <% tabs.each do |tab| %>
+      <%
+        count = tab[:key] == "all" ? status_counts.values.sum : (status_counts[tab[:key]] || 0)
+        is_active = status_filter == tab[:key]
+        has_count = count && count > 0
+      %>
+      <% if is_active %>
+        <%# Active: bg-blue-100, text-blue-700, font-medium, py-1.5 %>
+        <%= link_to purchase_orders_path(status: tab[:key]), class: "flex items-center gap-1 text-sm font-medium px-2 py-1.5 rounded-md bg-blue-100 text-blue-700" do %>
+          <%= tab[:label] %>
+        <% end %>
+      <% elsif has_count %>
+        <%# Inactive with counter: py-1, counter bg-red-50 text-red-500 rounded-full %>
+        <%= link_to purchase_orders_path(status: tab[:key]), class: "flex items-center gap-1 text-sm font-normal px-2 py-1 rounded-md bg-white text-gray-600 hover:bg-gray-100 transition-colors" do %>
+          <%= tab[:label] %>
+          <span class="text-sm font-normal px-2 py-0.5 rounded-full bg-red-50 text-red-500"><%= count %></span>
+        <% end %>
+      <% else %>
+        <%# Inactive without counter: py-1.5 %>
+        <%= link_to purchase_orders_path(status: tab[:key]), class: "flex items-center gap-1 text-sm font-normal px-2 py-1.5 rounded-md bg-white text-gray-600 hover:bg-gray-100 transition-colors" do %>
+          <%= tab[:label] %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%# CSV Download: xs/tertiary button %>
+  <button type="button" class="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-md border border-gray-200 bg-white text-btn-text-tertiary hover:bg-btn-tertiary-hover active:bg-btn-tertiary-active transition-colors">
+    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+    CSVダウンロード
+  </button>
+</div>

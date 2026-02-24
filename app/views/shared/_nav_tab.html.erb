@@ -1,0 +1,7 @@
+<%# locals: (label:, path:, active: false) %>
+<%# Component Catalog: tabs.html — Underline Tabs (p-3, border-slate-200) %>
+<% if active %>
+  <%= link_to label, path, class: "text-sm font-medium p-3 border-b-2 border-blue-500 text-blue-500" %>
+<% else %>
+  <%= link_to label, path, class: "text-sm font-normal p-3 border-b-2 border-transparent text-gray-600 hover:text-blue-600 hover:font-medium transition-colors" %>
+<% end %>

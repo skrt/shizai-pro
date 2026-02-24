@@ -1,0 +1,115 @@
+<div class="flex min-h-0 flex-1 flex-col px-8">
+  <%# New Order Button — Component Catalog: button.html — md/primary %>
+  <div class="mb-4 shrink-0 pt-4">
+    <%= link_to "#", class: "inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-white rounded-md bg-btn-primary hover:bg-btn-primary-hover active:bg-btn-primary-active transition-colors" do %>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="1.5"/><path stroke-linecap="round" stroke-width="1.5" d="M12 8v8m-4-4h8"/></svg>
+      新規発注
+    <% end %>
+  </div>
+
+  <%# Filter Section %>
+  <div class="shrink-0">
+    <%= render "purchase_orders/filter", suppliers: @suppliers, delivery_destinations: @delivery_destinations %>
+  </div>
+
+  <%# Status Tabs — Component Catalog: tabs.html — Pill Tabs %>
+  <div class="shrink-0">
+    <%= render "purchase_orders/status_tabs", status_filter: @status_filter, status_counts: @status_counts %>
+  </div>
+
+  <%# Data Table — Component Catalog: table.html %>
+  <div class="min-h-0 flex-1 overflow-y-auto border border-gray-200 rounded-md bg-white">
+    <%# Header Row: bg-gray-50, border-b gray-200 %>
+    <div class="flex items-center border-b border-gray-200 bg-gray-50 sticky top-0 z-10">
+      <%# Checkbox: w-10 %>
+      <div class="flex items-center justify-center shrink-0 w-10 py-2 px-3">
+        <input type="checkbox" class="w-4 h-4 rounded-sm border-gray-300 text-blue-600">
+      </div>
+      <%# Icon placeholder: w-8 %>
+      <div class="w-8 shrink-0"></div>
+      <%# Header cells: text-xs font-medium text-gray-600 %>
+      <div class="w-[140px] shrink-0 px-3 py-2 text-xs font-medium text-gray-600">発注書番号</div>
+      <div class="w-[140px] shrink-0 px-3 py-2 text-xs font-medium text-gray-600">入荷予定コード</div>
+      <div class="flex-1 px-3 py-2 text-xs font-medium text-gray-600">件名</div>
+      <div class="w-[104px] shrink-0 px-3 py-2 text-xs font-medium text-gray-600">ステータス</div>
+      <div class="flex-1 px-3 py-2 text-xs font-medium text-gray-600">発注日</div>
+      <div class="flex-1 px-3 py-2 text-xs font-medium text-gray-600">仕入先</div>
+      <div class="flex-1 px-3 py-2 text-xs font-medium text-gray-600">納品先</div>
+      <div class="flex-1 px-3 py-2 text-xs font-medium text-gray-600 text-right">合計金額</div>
+      <%# Icon button placeholder: w-12 %>
+      <div class="w-12 shrink-0"></div>
+      <%# Button placeholder: w-16 %>
+      <div class="w-16 shrink-0"></div>
+    </div>
+
+    <%# Data Rows %>
+    <% @purchase_orders.each do |po| %>
+      <div class="flex items-center border-b border-gray-200 hover:bg-gray-50 transition-colors">
+        <%# Checkbox %>
+        <div class="flex items-center justify-center shrink-0 w-10 py-3.5 px-3">
+          <input type="checkbox" class="w-4 h-4 rounded-sm border-gray-300 text-blue-600">
+        </div>
+        <%# Icon (grip-vertical placeholder) %>
+        <div class="w-8 shrink-0 py-2.5 px-1 flex items-center justify-center">
+          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="1.5"/><path stroke-linecap="round" stroke-width="1.5" d="M12 8v4m0 4h.01"/></svg>
+        </div>
+        <%# 発注書番号 — text %>
+        <div class="w-[140px] shrink-0 px-3 py-3 text-sm font-normal text-gray-900"><%= po.order_number %></div>
+        <%# 入荷予定コード — link %>
+        <div class="w-[140px] shrink-0 px-3 py-3">
+          <% if po.arrival_code.present? %>
+            <a href="#" class="text-sm font-normal text-blue-500 hover:underline"><%= po.arrival_code %></a>
+          <% else %>
+            <span class="text-sm text-gray-400">-</span>
+          <% end %>
+        </div>
+        <%# 件名 — text %>
+        <div class="flex-1 px-3 py-3 text-sm font-normal text-gray-900">
+          <% if po.subject.present? %>
+            <%= po.subject %>
+          <% else %>
+            <span class="text-gray-400">-</span>
+          <% end %>
+        </div>
+        <%# ステータス — badge (Component Catalog: badge.html — rounded-full, h-5, px-2) %>
+        <div class="w-[104px] shrink-0 px-3 py-3 flex items-center">
+          <span class="inline-flex items-center h-5 px-2 rounded-full text-xs font-medium bg-white <%= po.status_badge_classes %>">
+            <%= po.status_label %>
+          </span>
+        </div>
+        <%# 発注日 — text %>
+        <div class="flex-1 px-3 py-3 text-sm font-normal text-gray-900"><%= po.formatted_order_date %></div>
+        <%# 仕入先 — link %>
+        <div class="flex-1 px-3 py-3">
+          <a href="#" class="text-sm font-normal text-blue-500 hover:underline"><%= po.supplier.name %></a>
+        </div>
+        <%# 納品先 — link %>
+        <div class="flex-1 px-3 py-3">
+          <a href="#" class="text-sm font-normal text-blue-500 hover:underline"><%= po.delivery_destination.name %></a>
+        </div>
+        <%# 合計金額 — text right %>
+        <div class="flex-1 px-3 py-3 text-sm font-normal text-gray-900 text-right"><%= po.formatted_total_amount %></div>
+        <%# Icon button (message) — 24x24, bg-blue-100 %>
+        <div class="w-12 shrink-0 flex items-center justify-center py-2.5 px-3">
+          <div class="relative">
+            <button class="inline-flex items-center justify-center w-6 h-6 rounded-md bg-blue-100 hover:bg-blue-200 active:bg-blue-300 text-blue-700 hover:text-blue-800 active:text-blue-900 transition-colors">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+            </button>
+            <% if po.message_count > 0 %>
+              <span class="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-red-500"></span>
+            <% end %>
+          </div>
+        </div>
+        <%# Detail button — xs/secondary %>
+        <div class="w-16 shrink-0 flex items-center justify-center py-2.5 px-3">
+          <%= link_to "詳細", "#", class: "inline-flex items-center justify-center h-6 rounded-md bg-btn-secondary hover:bg-btn-secondary-hover text-xs font-medium text-btn-text-secondary hover:text-btn-text-secondary-hover transition-colors py-1 px-2" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%# Pagination (Component Catalog: pagination.html — テーブル外配置) %>
+  <div class="shrink-0">
+    <%= render "purchase_orders/pagination", page: @page, total_pages: @total_pages, status_filter: @status_filter %>
+  </div>
+</div>

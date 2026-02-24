@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+
+  /* Badge colors (Component Catalog) */
+  --color-badge-gray: #4A5565;
+  --color-badge-red: #E7000B;
+  --color-badge-orange: #F54A00;
+  --color-badge-amber: #E17100;
+  --color-badge-blue: #155DFC;
+  --color-badge-teal: #009689;
+
+  /* Button colors (Component Catalog) */
+  --color-btn-primary: #2b7fff;
+  --color-btn-primary-hover: #155dfc;
+  --color-btn-primary-active: #1447e6;
+  --color-btn-secondary: #dbeafe;
+  --color-btn-secondary-hover: #bedbff;
+  --color-btn-text-secondary: #1447e6;
+  --color-btn-text-secondary-hover: #193cb8;
+  --color-btn-tertiary-hover: #f9fafb;
+  --color-btn-tertiary-active: #f3f4f6;
+  --color-btn-text-tertiary: #101828;
+}

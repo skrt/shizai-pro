@@ -1,0 +1,26 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
+        - export PATH="$HOME/.rbenv/bin:$PATH"
+        - eval "$(rbenv init -)"
+        - rbenv install $(cat .ruby-version)
+        - rbenv global $(cat .ruby-version)
+        - gem install bundler --no-document
+        - bundle install
+    build:
+      commands:
+        - export PATH="$HOME/.rbenv/bin:$PATH"
+        - eval "$(rbenv init -)"
+        - bundle exec rails assets:precompile
+        - bundle exec rails tailwindcss:build
+  artifacts:
+    baseDirectory: public
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - vendor/bundle/**/*
+      - node_modules/**/*
