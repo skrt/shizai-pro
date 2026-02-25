@@ -10,7 +10,7 @@
   <div class="flex items-end gap-3">
     <%# 発注書番号 — Input sm (h-8), fixed width %>
     <div class="w-[120px] shrink-0">
-      <label class="mb-1.5 block text-sm font-medium text-gray-900">発注書番号</label>
+      <label class="mb-1.5 block text-sm font-normal text-gray-900">発注書番号</label>
       <div class="flex items-center h-8 px-3 py-1.5 rounded-md border border-gray-200 bg-white focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500">
         <input type="text" class="flex-1 text-sm text-gray-900 placeholder-gray-400 outline-none bg-transparent" placeholder="">
       </div>
@@ -18,7 +18,7 @@
 
     <%# 件名 — Input sm (h-8), flexible width %>
     <div class="flex-1 min-w-[120px]">
-      <label class="mb-1.5 block text-sm font-medium text-gray-900">件名</label>
+      <label class="mb-1.5 block text-sm font-normal text-gray-900">件名</label>
       <div class="flex items-center h-8 px-3 py-1.5 rounded-md border border-gray-200 bg-white focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500">
         <input type="text" class="flex-1 text-sm text-gray-900 placeholder-gray-400 outline-none bg-transparent" placeholder="">
       </div>
@@ -26,7 +26,7 @@
 
     <%# アイテム — ComboBox sm (h-8), flexible width %>
     <div class="flex-1 min-w-[120px]" data-controller="combobox">
-      <label class="mb-1.5 block text-sm font-medium text-gray-900">アイテム</label>
+      <label class="mb-1.5 block text-sm font-normal text-gray-900">アイテム</label>
       <div class="relative">
         <div class="flex items-center h-8 px-3 py-1.5 rounded-md border border-gray-200 bg-white focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500">
           <input type="text"
@@ -48,7 +48,7 @@
 
     <%# 仕入先 — ComboBox sm (h-8), flexible width %>
     <div class="flex-1 min-w-[100px]" data-controller="combobox">
-      <label class="mb-1.5 block text-sm font-medium text-gray-900">仕入先</label>
+      <label class="mb-1.5 block text-sm font-normal text-gray-900">仕入先</label>
       <div class="relative">
         <div class="flex items-center h-8 px-3 py-1.5 rounded-md border border-gray-200 bg-white focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500">
           <input type="text"
@@ -72,7 +72,7 @@
 
     <%# 納品先 — Select sm (h-8), flexible width %>
     <div class="flex-1 min-w-[100px]">
-      <label class="mb-1.5 block text-sm font-medium text-gray-900">納品先</label>
+      <label class="mb-1.5 block text-sm font-normal text-gray-900">納品先</label>
       <div class="relative">
         <select class="flex items-center w-full h-8 appearance-none px-3 py-1.5 pr-8 rounded-md border border-gray-200 bg-white text-sm text-gray-900 outline-none cursor-pointer focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
           <option value="">すべて</option>
@@ -88,7 +88,7 @@
 
     <%# 発注日 — Date Range Picker sm (h-8) with Calendar (Component Catalog: datepicker.html) %>
     <div class="w-[240px] shrink-0" data-controller="daterange">
-      <label class="mb-1.5 block text-sm font-medium text-gray-900">発注日</label>
+      <label class="mb-1.5 block text-sm font-normal text-gray-900">発注日</label>
       <div class="relative">
         <div data-daterange-target="trigger"
              data-action="click->daterange#toggle"
@@ -122,7 +122,7 @@
 
     <%# 希望納品日 — Date Range Picker sm (h-8) with Calendar (Component Catalog: datepicker.html) %>
     <div class="w-[240px] shrink-0" data-controller="daterange">
-      <label class="mb-1.5 block text-sm font-medium text-gray-900">希望納品日</label>
+      <label class="mb-1.5 block text-sm font-normal text-gray-900">希望納品日</label>
       <div class="relative">
         <div data-daterange-target="trigger"
              data-action="click->daterange#toggle"

@@ -3,6 +3,9 @@
 @theme {
   --font-sans: ui-sans-serif, system-ui, sans-serif;
 
+  /* System font の medium (500) は日本語で区別がつかないため 600 に上書き */
+  --font-weight-medium: 600;
+
   /* Badge colors (Component Catalog) */
   --color-badge-gray: #4A5565;
   --color-badge-red: #E7000B;
