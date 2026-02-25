@@ -17,10 +17,10 @@
     <%= render "purchase_orders/status_tabs", status_filter: @status_filter, status_counts: @status_counts %>
   </div>
 
-  <%# Data Table — Component Catalog: table.html %>
-  <div class="min-h-0 flex-1 overflow-y-auto border border-gray-200 rounded-md bg-white">
-    <%# Header Row: bg-gray-50, border-b gray-200 %>
-    <div class="flex items-center border-b border-gray-200 bg-gray-50 sticky top-0 z-10">
+  <%# Data Table — Component Catalog: table.html (no border, no radius, no header border-b) %>
+  <div class="min-h-0 flex-1 overflow-y-auto bg-white">
+    <%# Header Row: bg-gray-50, no border-bottom %>
+    <div class="flex items-center bg-gray-50 sticky top-0 z-10">
       <%# Checkbox: w-10 %>
       <div class="flex items-center justify-center shrink-0 w-10 py-2 px-3">
         <input type="checkbox" class="w-4 h-4 rounded-sm border-gray-300 text-blue-600">
@@ -106,10 +106,8 @@
         </div>
       </div>
     <% end %>
-  </div>
 
-  <%# Pagination (Component Catalog: pagination.html — テーブル外配置) %>
-  <div class="shrink-0">
+    <%# Pagination (Component Catalog: pagination.html — テーブル内配置) %>
     <%= render "purchase_orders/pagination", page: @page, total_pages: @total_pages, status_filter: @status_filter %>
   </div>
 </div>
