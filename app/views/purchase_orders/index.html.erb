@@ -1,6 +1,4 @@
-<div class="flex flex-1 overflow-hidden" data-controller="drawer" data-action="keydown.esc@document->drawer#close">
-  <%# Main Content Area — scrollable %>
-  <div class="flex-1 min-w-0 overflow-y-auto flex flex-col px-8 pb-6">
+<div class="px-8 pb-6">
     <%# New Order Button — Component Catalog: button.html — md/primary %>
     <div class="mb-4 shrink-0 pt-4">
       <%= link_to "#", class: "inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-white rounded-md bg-btn-primary hover:bg-btn-primary-hover active:bg-btn-primary-active transition-colors" do %>
@@ -144,9 +142,10 @@
       <%# Pagination (Component Catalog: pagination.html — テーブル内配置) %>
       <%= render "purchase_orders/pagination", page: @page, total_pages: @total_pages, status_filter: @status_filter %>
     </div>
-  </div>
+</div>
 
-  <%# Drawer — inline column, width transitions from 0 to 512px %>
+<%# Drawer — full-height inline column via content_for :drawer %>
+<% content_for :drawer do %>
   <div data-drawer-target="panel" class="shrink-0 overflow-hidden border-l border-gray-200 transition-[width] duration-300" style="width: 0; border-left-width: 0;">
     <div class="w-[512px] h-full flex flex-col bg-white">
       <%# Upper Area %>
@@ -213,4 +212,4 @@
       </div>
     </div>
   </div>
-</div>
+<% end %>
