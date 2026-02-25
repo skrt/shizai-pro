@@ -6,6 +6,7 @@ export default class extends Controller {
 
   toggle() {
     this.expandAreaTarget.classList.toggle("hidden")
-    this.iconTarget.classList.toggle("rotate-90")
+    const isExpanded = !this.expandAreaTarget.classList.contains("hidden")
+    this.iconTarget.style.transform = isExpanded ? "rotate(90deg)" : ""
   }
 }
