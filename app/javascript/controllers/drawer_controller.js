@@ -10,10 +10,12 @@ export default class extends Controller {
       this.titleTarget.textContent = `${orderNumber} メッセージ`
     }
 
-    this.panelTarget.style.transform = "translateX(0)"
+    this.panelTarget.style.width = "512px"
+    this.panelTarget.style.borderLeftWidth = "1px"
   }
 
   close() {
-    this.panelTarget.style.transform = "translateX(100%)"
+    this.panelTarget.style.width = "0"
+    this.panelTarget.style.borderLeftWidth = "0"
   }
 }

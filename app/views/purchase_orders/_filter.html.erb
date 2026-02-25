@@ -2,9 +2,9 @@
 <%# Component Catalog: input.html, select.html, combobox.html, datepicker.html — sm size (h-8) %>
 <div class="relative z-20 mb-4 flex flex-col gap-3">
   <div class="flex items-center gap-2">
-    <h3 class="text-sm font-medium text-gray-900">フィルター</h3>
+    <h3 class="text-sm font-semibold text-gray-900">フィルター</h3>
     <%# Reset: xs/tertiary button %>
-    <%= link_to "リセット", purchase_orders_path, class: "inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-2 py-1 text-xs font-medium text-btn-text-tertiary hover:bg-btn-tertiary-hover active:bg-btn-tertiary-active transition-colors" %>
+    <%= link_to "リセット", purchase_orders_path, class: "inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-2 py-1 text-xs font-semibold text-btn-text-tertiary hover:bg-btn-tertiary-hover active:bg-btn-tertiary-active transition-colors" %>
   </div>
 
   <div class="flex items-end gap-3">
@@ -36,7 +36,7 @@
                  autocomplete="off"
                  class="flex-1 text-sm text-gray-900 placeholder-gray-400 outline-none bg-transparent">
           <button type="button" data-combobox-target="clear" data-action="combobox#clear" class="hidden items-center">
-            <svg class="h-3 w-3 text-gray-400 hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <svg class="h-3 w-3 text-gray-400 hover:text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
           </button>
         </div>
         <div data-combobox-target="dropdown" class="absolute left-0 top-full z-30 mt-1 hidden w-full overflow-hidden rounded-md border border-gray-200 bg-white py-2 shadow-sm">
@@ -58,7 +58,7 @@
                  autocomplete="off"
                  class="flex-1 text-sm text-gray-900 placeholder-gray-400 outline-none bg-transparent">
           <button type="button" data-combobox-target="clear" data-action="combobox#clear" class="hidden items-center">
-            <svg class="h-3 w-3 text-gray-400 hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <svg class="h-3 w-3 text-gray-400 hover:text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
           </button>
         </div>
         <div data-combobox-target="dropdown" class="absolute left-0 top-full z-30 mt-1 hidden w-full overflow-hidden rounded-md border border-gray-200 bg-white py-2 shadow-sm">
@@ -81,7 +81,7 @@
           <% end %>
         </select>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-          <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          <svg class="w-3 h-3 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </div>
       </div>
     </div>
@@ -93,10 +93,10 @@
         <div data-daterange-target="trigger"
              data-action="click->daterange#toggle"
              class="flex items-center gap-1.5 h-8 px-3 rounded-md border border-gray-200 bg-white cursor-pointer transition-colors hover:border-gray-300">
-          <svg class="w-3 h-3 text-gray-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke-width="1.5"/><path stroke-linecap="round" stroke-width="1.5" d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <svg class="w-3 h-3 text-gray-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
           <span data-daterange-target="display" class="flex-1 text-sm text-gray-400 whitespace-nowrap overflow-hidden text-ellipsis">yyyy/mm/dd - yyyy/mm/dd</span>
           <button type="button" data-daterange-target="clear" data-action="click->daterange#clear" class="hidden shrink-0">
-            <svg class="w-3 h-3 text-gray-400 hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <svg class="w-3 h-3 text-gray-400 hover:text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
           </button>
         </div>
         <%# Calendar Dropdown — 288px, rounded-lg, p-3, shadow-md %>
@@ -127,10 +127,10 @@
         <div data-daterange-target="trigger"
              data-action="click->daterange#toggle"
              class="flex items-center gap-1.5 h-8 px-3 rounded-md border border-gray-200 bg-white cursor-pointer transition-colors hover:border-gray-300">
-          <svg class="w-3 h-3 text-gray-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke-width="1.5"/><path stroke-linecap="round" stroke-width="1.5" d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <svg class="w-3 h-3 text-gray-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
           <span data-daterange-target="display" class="flex-1 text-sm text-gray-400 whitespace-nowrap overflow-hidden text-ellipsis">yyyy/mm/dd - yyyy/mm/dd</span>
           <button type="button" data-daterange-target="clear" data-action="click->daterange#clear" class="hidden shrink-0">
-            <svg class="w-3 h-3 text-gray-400 hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <svg class="w-3 h-3 text-gray-400 hover:text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
           </button>
         </div>
         <%# Calendar Dropdown %>

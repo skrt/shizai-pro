@@ -34,10 +34,10 @@
         <span class="text-base text-btn-text-tertiary">株式会社shizai</span>
         <button class="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-md border border-gray-200 bg-white text-btn-text-tertiary hover:bg-btn-tertiary-hover active:bg-btn-tertiary-active transition-colors">
           澤井 亮太
-          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <button class="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-md border border-gray-200 bg-white text-btn-text-tertiary hover:bg-btn-tertiary-hover active:bg-btn-tertiary-active transition-colors">
-          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="1.5"/><path stroke-linecap="round" stroke-width="1.5" d="M12 8v4m0 4h.01"/></svg>
+          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
           ヘルプ
         </button>
       </div>
@@ -60,7 +60,7 @@
     </nav>
 
     <%# Main Content %>
-    <main class="flex flex-col">
+    <main class="flex-1 flex flex-col overflow-hidden">
       <%= yield %>
     </main>
   </body>
