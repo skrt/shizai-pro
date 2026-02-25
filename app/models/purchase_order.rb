@@ -1,6 +1,7 @@
 class PurchaseOrder < ApplicationRecord
   belongs_to :supplier
   belongs_to :delivery_destination
+  has_many :items, class_name: "PurchaseOrderItem", dependent: :destroy
 
   STATUSES = %w[
     draft

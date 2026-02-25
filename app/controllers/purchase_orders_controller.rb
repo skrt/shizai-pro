@@ -1,7 +1,7 @@
 class PurchaseOrdersController < ApplicationController
   def index
     @status_filter = params[:status] || "all"
-    @purchase_orders = PurchaseOrder.includes(:supplier, :delivery_destination).recent
+    @purchase_orders = PurchaseOrder.includes(:supplier, :delivery_destination, :items).recent
     @purchase_orders = @purchase_orders.by_status(@status_filter) unless @status_filter == "all"
 
     @status_counts = PurchaseOrder.group(:status).count

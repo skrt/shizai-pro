@@ -51,4 +51,36 @@ orders.each do |attrs|
   end
 end
 
-puts "Seeded: #{Supplier.count} suppliers, #{DeliveryDestination.count} destinations, #{PurchaseOrder.count} purchase orders"
+# Purchase Order Items (line items for expand row)
+item_names = [
+  "パウチ 100mm×150mm",
+  "配送箱 A4サイズ",
+  "ラベルシール 丸型",
+  "緩衝材 エアキャップ",
+  "OPP袋 A5サイズ",
+  "段ボール B5",
+  "テープ 透明 48mm",
+  "封筒 角2"
+]
+
+PurchaseOrder.find_each do |po|
+  next if po.items.any?
+
+  item_count = rand(1..4)
+  item_count.times do |i|
+    name = item_names.sample
+    code = "ITM-#{rand(10_000..99_999)}"
+    qty = [100, 200, 270, 500, 1_000].sample
+    price = [50, 100, 150, 200, 330, 500].sample
+    po.items.create!(
+      item_name: name,
+      item_code: code,
+      desired_delivery_date: po.order_date + rand(7..30).days,
+      quantity: qty,
+      unit_price: price,
+      amount: qty * price
+    )
+  end
+end
+
+puts "Seeded: #{Supplier.count} suppliers, #{DeliveryDestination.count} destinations, #{PurchaseOrder.count} purchase orders, #{PurchaseOrderItem.count} items"
