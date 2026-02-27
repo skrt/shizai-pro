@@ -24,15 +24,23 @@ frame.itemSpacing = 16;
 frame.fills = [{type:'SOLID',color:{r:0.96,g:0.96,b:0.96}}];
 ```
 
-### ローカルコンポーネントのみ使用
+### 登録済みコンポーネントのみ使用
 
-`getNodeByIdAsync(ComponentSetID)` でローカル取得すること。`importComponentByKeyAsync` 禁止（リモートライブラリのものが来る）。例外なし。
+**使用可能なコンポーネントは `/figma-components` に登録済みのもののみ。** ファイル内に存在しても未登録のコンポーネント（参考セクション内のもの等）は使用禁止。
+
+コンポーネント使用時の必須手順:
+1. **使用前に `/figma-components` の一覧で ID を確認する**
+2. `getNodeByIdAsync(ComponentSetID)` でローカル取得する（`importComponentByKeyAsync` 禁止）
+3. 一覧にないコンポーネントが必要な場合 → **ユーザーに確認**（正規コンポーネント化 or 手動構築）
 
 ```js
-// OK
+// OK: /figma-components に登録済みの ID を使用
 const set = await figma.getNodeByIdAsync('1625:1268');
 const variant = set.children.find(v => v.name === 'Size=md, Color=primary, State=default');
 const instance = variant.createInstance();
+
+// NG: 参考セクション等から見つけた未登録コンポーネントを使用
+const unknown = await figma.getNodeByIdAsync('xxxx:xxxx'); // /figma-components に未登録
 ```
 
 ### バリアント名は推測禁止
