@@ -1,3 +1,10 @@
+# Test User
+User.find_or_create_by!(email: "demo@shizai.com") do |user|
+  user.password = "password123"
+  user.last_name = "澤井"
+  user.first_name = "亮太"
+end
+
 # Suppliers
 shizai = Supplier.find_or_create_by!(name: "株式会社shizai")
 niiyama = Supplier.find_or_create_by!(name: "にいやま株式会社")

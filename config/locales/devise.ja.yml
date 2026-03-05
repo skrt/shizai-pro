@@ -1,0 +1,37 @@
+ja:
+  devise:
+    failure:
+      already_authenticated: "すでにログインしています"
+      inactive: "アカウントが有効化されていません"
+      invalid: "メールアドレスまたはパスワードが正しくありません"
+      locked: "アカウントがロックされています"
+      last_attempt: "もう1回失敗するとアカウントがロックされます"
+      not_found_in_database: "メールアドレスまたはパスワードが正しくありません"
+      timeout: "セッションがタイムアウトしました。再度ログインしてください"
+      unauthenticated: "ログインが必要です"
+      unconfirmed: "メールアドレスの確認が必要です"
+    sessions:
+      signed_in: "ログインしました"
+      signed_out: "ログアウトしました"
+      already_signed_out: "ログアウト済みです"
+    registrations:
+      signed_up: "アカウントを作成しました"
+      destroyed: "アカウントを削除しました"
+      updated: "アカウント情報を更新しました"
+      updated_but_not_signed_in: "アカウント情報を更新しました。パスワードが変更されたため、再度ログインしてください"
+    passwords:
+      send_instructions: "パスワードリセットの案内メールを送信しました"
+      send_paranoid_instructions: "メールアドレスが登録されていれば、パスワードリセットの案内メールが届きます"
+      updated: "パスワードを変更しました"
+      updated_not_active: "パスワードを変更しました"
+      no_token: "パスワードリセットメールのリンクからアクセスしてください"
+  errors:
+    messages:
+      already_confirmed: "は既に確認済みです"
+      confirmation_period_expired: "は%{period}以内に確認する必要があります。新しいリンクをリクエストしてください"
+      expired: "の有効期限が切れています。新しいリンクをリクエストしてください"
+      not_found: "は見つかりませんでした"
+      not_locked: "はロックされていません"
+      not_saved:
+        one: "1件のエラーが発生しました:"
+        other: "%{count}件のエラーが発生しました:"

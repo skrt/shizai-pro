@@ -36,6 +36,9 @@ module ShizaiPro
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
+    # Japanese locale
+    config.i18n.default_locale = :ja
+
     # Use UUID v7 as default primary key type
     config.generators.orm :active_record, primary_key_type: :uuid
 

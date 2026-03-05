@@ -1,0 +1,57 @@
+<%# Signup — based on mockups/auth/signup %>
+<div class="flex flex-col gap-6 items-center">
+  <h1 class="text-2xl font-bold text-gray-900 text-center">
+    アカウント作成
+  </h1>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { novalidate: true, class: "w-full flex flex-col gap-6" }) do |f| %>
+    <div class="w-full space-y-2">
+      <label class="block text-sm font-normal text-gray-900">メールアドレス <span class="text-red-500">*</span></label>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full h-10 px-4 py-2 text-base border #{resource.errors[:email].any? ? 'border-red-500' : 'border-gray-200'} rounded-md placeholder-gray-400 text-gray-900 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" %>
+      <% if resource.errors[:email].any? %>
+        <p class="text-xs text-red-500"><%= resource.errors[:email].first %></p>
+      <% end %>
+    </div>
+
+    <div class="w-full space-y-2" data-controller="password-toggle">
+      <label class="block text-sm font-normal text-gray-900">パスワード <span class="text-red-500">*</span></label>
+      <div class="relative">
+        <%= f.password_field :password, autocomplete: "new-password", data: { password_toggle_target: "input" }, class: "w-full h-10 px-4 py-2 pr-10 text-base border #{resource.errors[:password].any? ? 'border-red-500' : 'border-gray-200'} rounded-md placeholder-gray-400 text-gray-900 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" %>
+        <button type="button" data-action="password-toggle#toggle" class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500">
+          <svg data-password-toggle-target="showIcon" class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+          <svg data-password-toggle-target="hideIcon" class="w-4 h-4 hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></svg>
+        </button>
+      </div>
+      <% if resource.errors[:password].any? %>
+        <p class="text-xs text-red-500"><%= resource.errors[:password].first %></p>
+      <% else %>
+        <p class="text-xs text-gray-500">半角8文字以上・英字・数字・記号を含む</p>
+      <% end %>
+    </div>
+
+    <div class="w-full flex gap-4">
+      <div class="flex-1 space-y-2">
+        <label class="block text-sm font-normal text-gray-900">姓 <span class="text-red-500">*</span></label>
+        <%= f.text_field :last_name, class: "w-full h-10 px-4 py-2 text-base border #{resource.errors[:last_name].any? ? 'border-red-500' : 'border-gray-200'} rounded-md placeholder-gray-400 text-gray-900 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" %>
+        <% if resource.errors[:last_name].any? %>
+          <p class="text-xs text-red-500"><%= resource.errors[:last_name].first %></p>
+        <% end %>
+      </div>
+      <div class="flex-1 space-y-2">
+        <label class="block text-sm font-normal text-gray-900">名 <span class="text-red-500">*</span></label>
+        <%= f.text_field :first_name, class: "w-full h-10 px-4 py-2 text-base border #{resource.errors[:first_name].any? ? 'border-red-500' : 'border-gray-200'} rounded-md placeholder-gray-400 text-gray-900 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" %>
+        <% if resource.errors[:first_name].any? %>
+          <p class="text-xs text-red-500"><%= resource.errors[:first_name].first %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-medium text-white rounded-md bg-btn-primary hover:bg-btn-primary-hover active:bg-btn-primary-active transition-colors">
+      アカウント作成
+    </button>
+  <% end %>
+
+  <a href="<%= new_session_path(resource_name) %>" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium rounded-md border border-gray-200 bg-white text-btn-text-tertiary hover:bg-btn-tertiary-hover active:bg-btn-tertiary-active transition-colors">
+    すでにアカウントをお持ちの方はこちら
+  </a>
+</div>
