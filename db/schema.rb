@@ -14,36 +14,36 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_25_080250) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
-  create_table "delivery_destinations", force: :cascade do |t|
+  create_table "delivery_destinations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "name", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "purchase_order_items", force: :cascade do |t|
+  create_table "purchase_order_items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.integer "amount"
     t.datetime "created_at", null: false
     t.date "desired_delivery_date"
     t.string "item_code"
     t.string "item_name"
-    t.integer "purchase_order_id", null: false
+    t.uuid "purchase_order_id", null: false
     t.integer "quantity"
     t.integer "unit_price"
     t.datetime "updated_at", null: false
     t.index ["purchase_order_id"], name: "index_purchase_order_items_on_purchase_order_id"
   end
 
-  create_table "purchase_orders", force: :cascade do |t|
+  create_table "purchase_orders", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "arrival_code"
     t.datetime "created_at", null: false
-    t.integer "delivery_destination_id", null: false
+    t.uuid "delivery_destination_id", null: false
     t.date "desired_delivery_date"
     t.integer "message_count", default: 0
     t.date "order_date", null: false
     t.string "order_number", null: false
     t.string "status", default: "draft", null: false
     t.string "subject"
-    t.integer "supplier_id", null: false
+    t.uuid "supplier_id", null: false
     t.integer "total_amount", default: 0
     t.datetime "updated_at", null: false
     t.index ["delivery_destination_id"], name: "index_purchase_orders_on_delivery_destination_id"
@@ -52,7 +52,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_25_080250) do
     t.index ["supplier_id"], name: "index_purchase_orders_on_supplier_id"
   end
 
-  create_table "suppliers", force: :cascade do |t|
+  create_table "suppliers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "name", null: false
     t.datetime "updated_at", null: false

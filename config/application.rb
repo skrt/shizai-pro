@@ -36,6 +36,9 @@ module ShizaiPro
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
+    # Use UUID v7 as default primary key type
+    config.generators.orm :active_record, primary_key_type: :uuid
+
     # Don't generate system test files.
     config.generators.system_tests = nil
   end
