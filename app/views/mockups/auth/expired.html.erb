@@ -1,0 +1,19 @@
+<%# MagicLink_Expired — Figma node 1775:71399 %>
+<%# Form: flex flex-col gap-6 items-center %>
+<div class="flex flex-col gap-6 items-center">
+  <%# Title: text-2xl/bold %>
+  <h1 class="text-2xl font-bold text-gray-900 text-center">
+    リンクの有効期限が切れました
+  </h1>
+
+  <%# Description: text-sm/normal %>
+  <p class="text-sm font-normal text-gray-900 text-center leading-5">
+    ログインリンクの有効期限が切れました<br>
+    新しいリンクを送信しましょう
+  </p>
+
+  <%# Button (lg primary — "新しいリンクを送信") %>
+  <a href="<%= mockups_auth_login_path %>" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-medium text-white rounded-md bg-btn-primary hover:bg-btn-primary-hover active:bg-btn-primary-active transition-colors">
+    新しいリンクを送信
+  </a>
+</div>

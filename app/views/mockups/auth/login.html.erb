@@ -1,0 +1,40 @@
+<%# MagicLink_Login — Figma node 1775:71267 %>
+<%# Form: flex flex-col gap-6 items-center %>
+<div class="flex flex-col gap-6 items-center">
+  <%# Title: text-2xl/bold %>
+  <h1 class="text-2xl font-bold text-gray-900 text-center">
+    ログイン
+  </h1>
+
+  <%# Subtitle: text-sm/normal %>
+  <p class="text-sm font-normal text-gray-900 text-center">
+    メールアドレスを入力しましょう
+  </p>
+
+  <%# Input (md size from catalog: input.html) %>
+  <%= form_with url: mockups_auth_login_path, method: :post, class: "w-full flex flex-col gap-6", html: { novalidate: true } do |f| %>
+    <div class="w-full space-y-2">
+      <label class="block text-sm font-normal text-gray-900">メールアドレス</label>
+      <input
+        type="email"
+        name="email"
+        value="<%= @email %>"
+        autofocus
+        class="w-full h-10 px-4 py-2 text-base border <%= @error ? 'border-red-500' : 'border-gray-200' %> rounded-md placeholder-gray-400 text-gray-900 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+      />
+      <% if @error %>
+        <p class="text-xs text-red-500"><%= @error %></p>
+      <% end %>
+    </div>
+
+    <%# Button (lg primary from catalog: button.html — no icons, full width) %>
+    <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-medium text-white rounded-md bg-btn-primary hover:bg-btn-primary-hover active:bg-btn-primary-active transition-colors">
+      ログインリンクを送信
+    </button>
+  <% end %>
+
+  <%# Button (tertiary md) — link to password login %>
+  <a href="<%= mockups_auth_password_login_path %>" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium rounded-md border border-gray-200 bg-white text-btn-text-tertiary hover:bg-btn-tertiary-hover active:bg-btn-tertiary-active transition-colors">
+    パスワードでログイン
+  </a>
+</div>

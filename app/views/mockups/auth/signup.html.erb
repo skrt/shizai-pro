@@ -1,0 +1,87 @@
+<%# Signup — Figma node 1854:17293 %>
+<%# Form: flex flex-col gap-6 items-center %>
+<div class="flex flex-col gap-6 items-center">
+  <%# Title: text-2xl/bold %>
+  <h1 class="text-2xl font-bold text-gray-900 text-center">
+    アカウント作成
+  </h1>
+
+  <%= form_with url: mockups_auth_signup_path, method: :post, class: "w-full flex flex-col gap-6", html: { novalidate: true } do |f| %>
+    <%# Email input %>
+    <div class="w-full space-y-2">
+      <label class="block text-sm font-normal text-gray-900">メールアドレス <span class="text-red-500">*</span></label>
+      <input
+        type="email"
+        name="email"
+        value="<%= @email %>"
+        autofocus
+        class="w-full h-10 px-4 py-2 text-base border <%= @errors&.dig(:email) ? 'border-red-500' : 'border-gray-200' %> rounded-md placeholder-gray-400 text-gray-900 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+      />
+      <% if @errors&.dig(:email) %>
+        <p class="text-xs text-red-500"><%= @errors[:email] %></p>
+      <% end %>
+    </div>
+
+    <%# Password input with eye toggle %>
+    <div class="w-full space-y-2" data-controller="password-toggle">
+      <label class="block text-sm font-normal text-gray-900">パスワード <span class="text-red-500">*</span></label>
+      <div class="relative">
+        <input
+          type="password"
+          name="password"
+          data-password-toggle-target="input"
+          class="w-full h-10 px-4 py-2 pr-10 text-base border <%= @errors&.dig(:password) ? 'border-red-500' : 'border-gray-200' %> rounded-md placeholder-gray-400 text-gray-900 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+        />
+        <button type="button" data-action="password-toggle#toggle" class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500">
+          <%# eye icon (show) %>
+          <svg data-password-toggle-target="showIcon" class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+          <%# eye-off icon (hide) %>
+          <svg data-password-toggle-target="hideIcon" class="w-4 h-4 hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></svg>
+        </button>
+      </div>
+      <% if @errors&.dig(:password) %>
+        <p class="text-xs text-red-500"><%= @errors[:password] %></p>
+      <% else %>
+        <p class="text-xs text-gray-500">半角8文字以上・英字・数字・記号を含む</p>
+      <% end %>
+    </div>
+
+    <%# Last name / First name — horizontal %>
+    <div class="w-full flex gap-4">
+      <div class="flex-1 space-y-2">
+        <label class="block text-sm font-normal text-gray-900">姓 <span class="text-red-500">*</span></label>
+        <input
+          type="text"
+          name="last_name"
+          value="<%= @last_name %>"
+          class="w-full h-10 px-4 py-2 text-base border <%= @errors&.dig(:last_name) ? 'border-red-500' : 'border-gray-200' %> rounded-md placeholder-gray-400 text-gray-900 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+        />
+        <% if @errors&.dig(:last_name) %>
+          <p class="text-xs text-red-500"><%= @errors[:last_name] %></p>
+        <% end %>
+      </div>
+      <div class="flex-1 space-y-2">
+        <label class="block text-sm font-normal text-gray-900">名 <span class="text-red-500">*</span></label>
+        <input
+          type="text"
+          name="first_name"
+          value="<%= @first_name %>"
+          class="w-full h-10 px-4 py-2 text-base border <%= @errors&.dig(:first_name) ? 'border-red-500' : 'border-gray-200' %> rounded-md placeholder-gray-400 text-gray-900 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+        />
+        <% if @errors&.dig(:first_name) %>
+          <p class="text-xs text-red-500"><%= @errors[:first_name] %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <%# Button (primary lg) %>
+    <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-medium text-white rounded-md bg-btn-primary hover:bg-btn-primary-hover active:bg-btn-primary-active transition-colors">
+      アカウント作成
+    </button>
+  <% end %>
+
+  <%# Button (tertiary md) — link to password login %>
+  <a href="<%= mockups_auth_password_login_path %>" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium rounded-md border border-gray-200 bg-white text-btn-text-tertiary hover:bg-btn-tertiary-hover active:bg-btn-tertiary-active transition-colors">
+    すでにアカウントをお持ちの方はこちら
+  </a>
+</div>

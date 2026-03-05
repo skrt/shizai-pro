@@ -1,0 +1,22 @@
+<%# MagicLink_Sent — Figma node 1775:71381 %>
+<%# Form: flex flex-col gap-6 items-center %>
+<div class="flex flex-col gap-6 items-center">
+  <%# Title: text-2xl/bold %>
+  <h1 class="text-2xl font-bold text-gray-900 text-center">
+    メールを確認しましょう
+  </h1>
+
+  <%# Description: text-sm/normal, multi-line %>
+  <p class="text-sm font-normal text-gray-900 text-center leading-5">
+    <%= @email %> にログインリンクを送信しました<br>
+    メール内のリンクをクリックしてログインしましょう
+  </p>
+
+  <%# Helper text: text-xs/normal, text-gray-600 (Figma) %>
+  <p class="text-xs font-normal text-gray-600 text-center">
+    メールが届かない場合は、迷惑メールフォルダを確認しましょう
+  </p>
+
+  <%# Resend button (md tertiary from catalog: button.html) %>
+  <%= button_to "メールを再送", mockups_auth_resend_path(email: @email), method: :post, form_class: "w-full", class: "w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium rounded-md border border-gray-200 bg-white text-btn-text-tertiary hover:bg-btn-tertiary-hover active:bg-btn-tertiary-active transition-colors" %>
+</div>

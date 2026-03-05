@@ -14,14 +14,19 @@
   --color-badge-blue: #155DFC;
   --color-badge-teal: #009689;
 
+  /* Toast colors (Component Catalog) */
+  --color-toast-success: #009966;
+
   /* Button colors (Component Catalog) */
   --color-btn-primary: #2b7fff;
   --color-btn-primary-hover: #155dfc;
   --color-btn-primary-active: #1447e6;
   --color-btn-secondary: #dbeafe;
   --color-btn-secondary-hover: #bedbff;
+  --color-btn-secondary-active: #8ec5ff;
   --color-btn-text-secondary: #1447e6;
   --color-btn-text-secondary-hover: #193cb8;
+  --color-btn-text-secondary-active: #1c398e;
   --color-btn-tertiary-hover: #f9fafb;
   --color-btn-tertiary-active: #f3f4f6;
   --color-btn-text-tertiary: #101828;
