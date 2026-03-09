@@ -28,7 +28,7 @@ IDは変更の可能性あり。不明時は `figma_execute` で確認。
 | 15 | Switch | `1643:7626` | Size: sm/md/lg, On: true/false |
 | 16 | Tooltip | `1643:7651` | Position: top/bottom/left/right |
 | 17 | Popover | `1643:7758` | State: default/hover |
-| 18 | Badge | `1715:5360` | Type: draft/pending_approval/pending_send/pending_delivery/delivered/partially_delivered/returned/cancelled/expired/creating/created |
+| 18 | Badge | `1715:5360` | Color: gray/red/orange/amber/teal/blue |
 | 19 | Detail Row | `1646:8409` | Type: text/link/links/badge |
 | 20 | Table / Header | `1697:4067` | Type: text/checkbox/number |
 | 21 | Table / Data | `1647:11480` | Type: text/link/badge/checkbox/button/icon/icon button/number/select/multiline text/multiline number/date icon |
@@ -55,9 +55,6 @@ IDは変更の可能性あり。不明時は `figma_execute` で確認。
 | 42 | Modal / MemberSelect | `1741:3402` | (単一) |
 | 43 | MemberSelect Header | `1741:3392` | (単一) |
 | 44 | MemberSelect Row | — | State: default/hover |
-| 45 | Routing Step | `1743:5412` | State: Unconfigured/Configured/Error/Add |
-| 46 | Routing | `1743:5704` | State: Default/Add1/Input/Error-Unconfigured/Error-Editer |
-| 47 | Approval Tracker Step | `1743:5457` | State: Unconfirmed/Done/Reject |
-| 48 | Approval Tracker Step Multi | `1743:6064` | State: Default/Partial/Approval/Reject/Skip/And-Default/And-Partial/And-Approval/And-Reject |
-| 49 | Approval Tracker | `1743:6065` | (単一) |
+| 45 | Routing | `1743:5412` | State: Unconfigured/Configured/Error/Add |
+| 47 | Approval Tracker | `1743:5457` | State: Unconfirmed/Done/Reject |
 | — | Icon / Slot | `1625:10308` | Size: xs/sm/md/lg/xl |
