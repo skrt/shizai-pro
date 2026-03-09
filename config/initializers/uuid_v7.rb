@@ -5,11 +5,11 @@ module UUIDv7
     timestamp_ms = Process.clock_gettime(Process::CLOCK_REALTIME, :millisecond)
 
     # 48 bits of Unix timestamp (milliseconds)
-    uuid_bytes = [timestamp_ms >> 16, timestamp_ms & 0xFFFF].pack("Nn")
+    uuid_bytes = [ timestamp_ms >> 16, timestamp_ms & 0xFFFF ].pack("Nn")
 
     # 4 bits version (0111 = 7) + 12 bits random
     random_a = SecureRandom.random_number(0x1000) | 0x7000
-    uuid_bytes += [random_a].pack("n")
+    uuid_bytes += [ random_a ].pack("n")
 
     # 2 bits variant (10) + 62 bits random
     random_b = SecureRandom.random_bytes(8)
