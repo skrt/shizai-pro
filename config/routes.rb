@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
+  # Magic link routes (before devise so /auth/login maps here)
+  scope "auth" do
+    get  "login",              to: "users/magic_links#new",     as: :magic_link_login
+    post "login",              to: "users/magic_links#create"
+    get  "magic_link/sent",    to: "users/magic_links#sent",    as: :magic_link_sent
+    post "magic_link/resend",  to: "users/magic_links#resend",  as: :resend_magic_link
+    get  "magic_link/verify",  to: "users/magic_links#verify",  as: :verify_magic_link
+    get  "magic_link/expired", to: "users/magic_links#expired",  as: :magic_link_expired
+  end
+
   devise_for :users, path: "auth", path_names: {
-    sign_in: "login", sign_out: "logout", sign_up: "signup"
+    sign_in: "password_login", sign_out: "logout", sign_up: "signup"
   }, controllers: {
     registrations: "users/registrations",
     sessions: "users/sessions"

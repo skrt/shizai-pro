@@ -7,4 +7,10 @@ class ApplicationController < ActionController::Base
 
   # Require authentication for all pages
   before_action :authenticate_user!
+
+  private
+
+  def after_sign_out_path_for(_resource_or_scope)
+    magic_link_login_path
+  end
 end

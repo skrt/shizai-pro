@@ -29,12 +29,12 @@ orders = [
   { order_number: "20220401_004", arrival_code: "1234567890123", subject: "Cell Data", status: "delivered",       order_date: "2022-12-27", supplier: shizai,        delivery_destination: warehouse_main, total_amount: 99_999_999, message_count: 0 },
   { order_number: "20220401_005", arrival_code: "1234567890123", subject: "Cell Data", status: "delivered",       order_date: "2022-12-27", supplier: shizai,        delivery_destination: warehouse_main, total_amount: 99_999_999, message_count: 0 },
   { order_number: "20220401_006", arrival_code: "1234567890123", subject: "Cell Data", status: "pending_approval", order_date: "2022-12-27", supplier: shizai,       delivery_destination: warehouse_main, total_amount: 99_999_999, message_count: 0 },
-  { order_number: "20220401_007", arrival_code: "1234567890123", subject: "Cell Data", status: "draft",           order_date: "2022-12-27", supplier: shizai,        delivery_destination: warehouse_main, total_amount: 99_999_999, message_count: 0 },
+  { order_number: "20220401_007", arrival_code: "1234567890123", subject: "Cell Data", status: "draft",           order_date: "2022-12-27", supplier: shizai,        delivery_destination: warehouse_main, total_amount: 99_999_999, message_count: 0 }
 ]
 
 # Additional data to fill pagination
-suppliers_all = [shizai, niiyama, supplier_co, test_supplier]
-dests_all = [warehouse_a, warehouse_dev, warehouse_main]
+suppliers_all = [ shizai, niiyama, supplier_co, test_supplier ]
+dests_all = [ warehouse_a, warehouse_dev, warehouse_main ]
 statuses = PurchaseOrder::STATUSES
 
 40.times do |i|
@@ -42,13 +42,13 @@ statuses = PurchaseOrder::STATUSES
   orders << {
     order_number: date.strftime("%Y%m%d") + "-#{format('%03d', (i % 3) + 1)}",
     arrival_code: i.even? ? "296002#{rand(1_000_000..9_999_999)}" : nil,
-    subject: ["テスト発注", "サンプル", "定期発注", nil].sample,
+    subject: [ "テスト発注", "サンプル", "定期発注", nil ].sample,
     status: statuses.sample,
     order_date: date,
     supplier: suppliers_all.sample,
     delivery_destination: dests_all.sample,
-    total_amount: [0, 33_000, 66_000, 99_000, 132_000, 297_000].sample,
-    message_count: [0, 0, 0, 1, 2].sample
+    total_amount: [ 0, 33_000, 66_000, 99_000, 132_000, 297_000 ].sample,
+    message_count: [ 0, 0, 0, 1, 2 ].sample
   }
 end
 
@@ -77,8 +77,8 @@ PurchaseOrder.find_each do |po|
   item_count.times do |i|
     name = item_names.sample
     code = "ITM-#{rand(10_000..99_999)}"
-    qty = [100, 200, 270, 500, 1_000].sample
-    price = [50, 100, 150, 200, 330, 500].sample
+    qty = [ 100, 200, 270, 500, 1_000 ].sample
+    price = [ 50, 100, 150, 200, 330, 500 ].sample
     po.items.create!(
       item_name: name,
       item_code: code,

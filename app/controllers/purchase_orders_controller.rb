@@ -9,7 +9,7 @@ class PurchaseOrdersController < ApplicationController
     @page = (params[:page] || 1).to_i
     @per_page = 20
     @total_count = @purchase_orders.count
-    @total_pages = [(@total_count.to_f / @per_page).ceil, 1].max
+    @total_pages = [ (@total_count.to_f / @per_page).ceil, 1 ].max
     @page = @page.clamp(1, @total_pages)
     @purchase_orders = @purchase_orders.offset((@page - 1) * @per_page).limit(@per_page)
 

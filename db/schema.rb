@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_05_140631) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_09_010540) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -30,7 +30,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_05_140631) do
     t.integer "quantity"
     t.integer "unit_price"
     t.datetime "updated_at", null: false
-    t.index ["purchase_order_id"], name: "index_purchase_order_items_on_purchase_order_id"
+    t.index [ "purchase_order_id" ], name: "index_purchase_order_items_on_purchase_order_id"
   end
 
   create_table "purchase_orders", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -46,10 +46,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_05_140631) do
     t.uuid "supplier_id", null: false
     t.integer "total_amount", default: 0
     t.datetime "updated_at", null: false
-    t.index ["delivery_destination_id"], name: "index_purchase_orders_on_delivery_destination_id"
-    t.index ["order_number"], name: "index_purchase_orders_on_order_number", unique: true
-    t.index ["status"], name: "index_purchase_orders_on_status"
-    t.index ["supplier_id"], name: "index_purchase_orders_on_supplier_id"
+    t.index [ "delivery_destination_id" ], name: "index_purchase_orders_on_delivery_destination_id"
+    t.index [ "order_number" ], name: "index_purchase_orders_on_order_number", unique: true
+    t.index [ "status" ], name: "index_purchase_orders_on_status"
+    t.index [ "supplier_id" ], name: "index_purchase_orders_on_supplier_id"
   end
 
   create_table "suppliers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -64,12 +64,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_05_140631) do
     t.string "encrypted_password", default: "", null: false
     t.string "first_name", default: "", null: false
     t.string "last_name", default: "", null: false
+    t.datetime "magic_link_sent_at"
+    t.string "magic_link_token"
     t.datetime "remember_created_at"
     t.datetime "reset_password_sent_at"
     t.string "reset_password_token"
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index [ "email" ], name: "index_users_on_email", unique: true
+    t.index [ "magic_link_token" ], name: "index_users_on_magic_link_token", unique: true
+    t.index [ "reset_password_token" ], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "purchase_order_items", "purchase_orders"
