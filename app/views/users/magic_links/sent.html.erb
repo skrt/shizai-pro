@@ -1,0 +1,17 @@
+<%# MagicLink Sent — email sent confirmation %>
+<div class="flex flex-col gap-6 items-center">
+  <h1 class="text-2xl font-bold text-gray-900 text-center">
+    メールを確認しましょう
+  </h1>
+
+  <p class="text-sm font-normal text-gray-900 text-center leading-5">
+    <%= @email %> にログインリンクを送信しました<br>
+    メール内のリンクをクリックしてログインしましょう
+  </p>
+
+  <p class="text-xs font-normal text-gray-600 text-center">
+    メールが届かない場合は、迷惑メールフォルダを確認しましょう
+  </p>
+
+  <%= button_to "メールを再送", resend_magic_link_path(email: @email), method: :post, form_class: "w-full", class: "w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium rounded-md border border-gray-200 bg-white text-btn-text-tertiary hover:bg-btn-tertiary-hover active:bg-btn-tertiary-active transition-colors" %>
+</div>

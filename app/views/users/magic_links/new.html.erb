@@ -1,0 +1,36 @@
+<%# MagicLink Login — default login screen %>
+<div class="flex flex-col gap-6 items-center">
+  <h1 class="text-2xl font-bold text-gray-900 text-center">
+    ログイン
+  </h1>
+
+  <p class="text-sm font-normal text-gray-900 text-center">
+    メールアドレスを入力しましょう
+  </p>
+
+  <%= form_with url: magic_link_login_path, method: :post, class: "w-full flex flex-col gap-6", html: { novalidate: true } do |f| %>
+    <div class="w-full space-y-2">
+      <label class="block text-sm font-normal text-gray-900">メールアドレス</label>
+      <input
+        type="email"
+        name="email"
+        value="<%= @email %>"
+        autofocus
+        class="w-full h-10 px-4 py-2 text-base border <%= @error ? 'border-red-500' : 'border-gray-200' %> rounded-md placeholder-gray-400 text-gray-900 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+      />
+      <% if @error %>
+        <p class="text-xs text-red-500"><%= @error %></p>
+      <% end %>
+    </div>
+
+    <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-medium text-white rounded-md bg-btn-primary hover:bg-btn-primary-hover active:bg-btn-primary-active transition-colors">
+      ログインリンクを送信
+    </button>
+  <% end %>
+
+  <div class="w-full border-t border-gray-200"></div>
+
+  <a href="<%= new_user_session_path %>" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium rounded-md bg-btn-secondary text-btn-text-secondary hover:bg-btn-secondary-hover hover:text-btn-text-secondary-hover active:bg-btn-secondary-active active:text-btn-text-secondary-active transition-colors">
+    パスワードでログインに切り替え
+  </a>
+</div>

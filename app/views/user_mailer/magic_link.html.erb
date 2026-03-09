@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { margin: 0; padding: 0; background-color: #f3f4f6; font-family: ui-sans-serif, system-ui, sans-serif; }
+    .container { max-width: 512px; margin: 40px auto; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 40px; }
+    .logo { text-align: center; margin-bottom: 32px; }
+    h1 { font-size: 24px; font-weight: 700; color: #101828; text-align: center; margin: 0 0 16px 0; }
+    p { font-size: 14px; color: #101828; line-height: 1.6; text-align: center; margin: 0 0 24px 0; }
+    .btn { display: block; width: 100%; box-sizing: border-box; padding: 12px 24px; background-color: #2b7fff; color: #ffffff !important; text-decoration: none; text-align: center; font-size: 16px; font-weight: 600; border-radius: 6px; }
+    .btn:hover { background-color: #155dfc; }
+    .note { font-size: 12px; color: #6a7282; text-align: center; margin-top: 24px; }
+    .footer { font-size: 12px; color: #99a1af; text-align: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid #e5e7eb; }
+  </style>
+</head>
+<body>
+  <div style="padding: 40px 0;">
+    <div class="logo">
+      <span style="font-size: 28px; font-weight: 700; color: #0F1424; letter-spacing: -0.5px;">shizai</span>
+    </div>
+    <div class="container">
+      <h1>ログインリンク</h1>
+      <p>
+        以下のボタンをクリックして、shizai にログインしてください。<br>
+        このリンクは30分間有効です。
+      </p>
+      <a href="<%= @magic_link_url %>" class="btn">
+        shizai にログイン
+      </a>
+      <p class="note">
+        このメールに心当たりがない場合は、無視してください。
+      </p>
+      <div class="footer">
+        <p style="margin: 0; font-size: 12px; color: #99a1af;">
+          &copy; shizai inc. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
