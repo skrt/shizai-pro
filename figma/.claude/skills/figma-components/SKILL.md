@@ -28,7 +28,7 @@ IDは変更の可能性あり。不明時は `figma_execute` で確認。
 | 15 | Switch | `1643:7626` | Size: sm/md/lg, On: true/false |
 | 16 | Tooltip | `1643:7651` | Position: top/bottom/left/right |
 | 17 | Popover | `1643:7758` | State: default/hover |
-| 18 | Badge | `1715:5360` | Color: gray/red/orange/amber/teal/blue |
+| 18 | Badge | `1715:5360` | Color: gray/red/orange/amber/teal/blue/violet |
 | 19 | Detail Row | `1646:8409` | Type: text/link/links/badge |
 | 20 | Table / Header | `1697:4067` | Type: text/checkbox/number |
 | 21 | Table / Data | `1647:11480` | Type: text/link/badge/checkbox/button/icon/icon button/number/select/multiline text/multiline number/date icon |
@@ -47,14 +47,11 @@ IDは変更の可能性あり。不明時は `figma_execute` で確認。
 | 34 | Date Range Picker | `1728:2958` | Size: sm/md, State: default/focus/error/disabled/filled |
 | 35 | Drawer | `1731:4922` | Type: Default |
 | 36 | Drawer Message | `1731:4923` | Type: receive/send |
-| 37 | Modal Dialog | `1643:7759` | (単一) |
-| 38 | Modal Footer | `1741:3492` | (単一) |
-| 39 | Modal / ItemSelect | `1739:2687` | (単一) |
-| 40 | ItemSelect Header | `1739:2649` | (単一) |
-| 41 | ItemSelect Row | `1739:2686` | State: default/hover, Checked: true/false |
-| 42 | Modal / MemberSelect | `1741:3402` | (単一) |
-| 43 | MemberSelect Header | `1741:3392` | (単一) |
-| 44 | MemberSelect Row | — | State: default/hover |
-| 45 | Routing | `1743:5412` | State: Unconfigured/Configured/Error/Add |
-| 47 | Approval Tracker | `1743:5457` | State: Unconfirmed/Done/Reject |
+| 37 | Modal Dialog | `1643:7759` | Title (TEXT), Contents (SLOT) |
+| 38 | Modal Footer | `1741:3492` | Countを表示 (BOOLEAN), Actions (SLOT) |
+| 39 | Modal / Table | `1739:2687` | Filter (SLOT), Header (SLOT), Table (SLOT) |
+| 40 | ItemSelect Row | `1739:2686` | State: default/hover |
+| 41 | MemberSelect Row | `1746:7619` | State: default/hover |
+| 42 | Routing | `1743:5412` | State: Unconfigured/Configured/Error/Add |
+| 43 | Approval Tracker | `1743:5457` | State: Unconfirmed/Done/Reject |
 | — | Icon / Slot | `1625:10308` | Size: xs/sm/md/lg/xl |
