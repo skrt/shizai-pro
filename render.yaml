@@ -1,0 +1,22 @@
+databases:
+  - name: shizai-pro-db
+    plan: free
+    databaseName: shizai_pro
+    user: shizai_pro
+
+services:
+  - type: web
+    name: shizai-pro
+    runtime: docker
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: shizai-pro-db
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: RAILS_ENV
+        value: production
+      - key: RAILS_LOG_TO_STDOUT
+        value: "1"
