@@ -16,6 +16,13 @@ Rails.application.routes.draw do
     sessions: "users/sessions"
   }
   resources :purchase_orders, only: [ :index ]
+  resources :items, only: [ :index, :new, :create, :show ]
+  resources :suppliers, only: [ :index, :new, :create ]
+  resources :members, only: [ :index, :new, :create, :update, :destroy ] do
+    member do
+      post :reinvite
+    end
+  end
 
   # Mockup routes (design review)
   namespace :mockups do
@@ -33,5 +40,9 @@ Rails.application.routes.draw do
 
   get "up" => "rails/health#show", as: :rails_health_check
 
-  root "purchase_orders#index"
+  # 未ログイン: サインアップ画面, ログイン済: 発注一覧
+  authenticated :user do
+    root "purchase_orders#index", as: :authenticated_root
+  end
+  root "devise/registrations#new"
 end
