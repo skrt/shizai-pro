@@ -40,9 +40,11 @@ Rails.application.routes.draw do
 
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # 未ログイン: サインアップ画面, ログイン済: 発注一覧
+  # 未ログイン: サインアップ画面にリダイレクト, ログイン済: 発注一覧
   authenticated :user do
     root "purchase_orders#index", as: :authenticated_root
   end
-  root "devise/registrations#new"
+  devise_scope :user do
+    root to: "users/registrations#new"
+  end
 end
